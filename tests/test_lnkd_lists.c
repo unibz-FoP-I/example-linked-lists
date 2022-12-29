@@ -64,6 +64,8 @@ void test_lnkd_str_insert(void) {
     TEST_ASSERT_EQUAL_STRING_ARRAY(sorted_words, list_array, sizeof(WORD_LIST)/sizeof(char *));
     free(list_array);
     free(sorted_words);
+    // clear the list to avoid memory leaks
+    while (!lnkd_isEmpty(&list)) lnkd_pop(&list);
 }
 
 void test_lnkd_str_pop(void) {

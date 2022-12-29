@@ -55,6 +55,7 @@ LinkedList *strLst_read(FILE *fp) {
             if (nlPtr) *nlPtr = 0;
             strLst_insert(listPtr, line);
         }
+        free(line_buf);
     }
     return listPtr;
 }

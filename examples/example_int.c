@@ -53,6 +53,7 @@ LinkedList *intLst_read(FILE *fp) {
             int value = (int)strtol(line_buf, &end, 10);
             if (end != line_buf) intLst_insert(listPtr, value);
         }
+        free(line_buf);
     }
     return listPtr;
 }

@@ -22,7 +22,7 @@ cmake -B build
 
 To generate the executables the command should be:
 
-`` bash
+``` bash
 cmake --build build
 ```
 
@@ -37,7 +37,7 @@ The compilation process generates the following executables within the `./build/
 Tests can be run using the `ctest` command (shipped with CMake). The configuration for the tests is in the `build` directory, and they can be run using the command:
 
 ``` bash
-ctest --test-dir build
+(cd build; ctest)
 ```
 
 ### Cleanup
@@ -86,6 +86,13 @@ Most of the Unix systems (including Linux and OSX) include a file with a list of
 ```bash
 $ shuf -n 10 /usr/share/dict/words | ./build/examples/example_str 
 ["Platonesque", "atramental", "caltrop", "cuneator", "fittable", "formicide", "nonstimulant", "rizzonite", "signify", "spirillaceous"]
+```
+
+If the system you're using doesn't have the `/usr/share/dict/words` file, e.g., in GitHub Codespaces VM, you can use the online [Random word API](https://random-word-api.herokuapp.com/home). To do so via command line you need the [jq](https://stedolan.github.io/jq/) JSON processor and [curl](https://curl.se/):
+
+```bash
+$ curl -s https://random-word-api.herokuapp.com/word?number=10|jq -r '.[]'|./build/examples/example_str 
+["acellular", "dampers", "dialings", "geomorphologist", "hexagram", "invirile", "lecythus", "reinserted", "subpanels", "trypsin"]
 ```
 
 ## Licence
